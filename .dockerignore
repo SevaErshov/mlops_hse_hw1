@@ -1,0 +1,9 @@
+.git
+.venv
+__pycache__
+**/__pycache__
+*.zip
+.env
+.DS_Store
+data/train.csv
+data/test.csv

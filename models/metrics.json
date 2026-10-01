@@ -1,0 +1,15 @@
+{
+  "model": "DictVectorizer + RandomForestClassifier (60 trees, depth 12)",
+  "train_rows": 84000,
+  "validation_rows": 18000,
+  "test_rows": 18000,
+  "fraud_rate": 0.005725,
+  "seed": 42,
+  "threshold": 0.75,
+  "f1": 0.75,
+  "precision": 0.7731958762886598,
+  "recall": 0.7281553398058253,
+  "roc_auc": 0.988467991869332,
+  "average_precision": 0.778587040953566,
+  "split": "stratified random 70/15/15; threshold selected on validation only"
+}

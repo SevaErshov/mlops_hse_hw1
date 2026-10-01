@@ -1,0 +1,23 @@
+name: Project check
+on: [push, pull_request, workflow_dispatch]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate compose
+        run: docker compose config --quiet
+      - name: Start services
+        run: docker compose up -d --build --wait --wait-timeout 180
+      - name: Unit tests
+        run: docker compose exec -T scorer python -m unittest discover -s tests -v
+      - name: Full pipeline
+        run: docker compose exec -T scorer python -m scripts.smoke_test
+      - name: Logs
+        if: always()
+        run: docker compose logs --no-color --tail=100
+      - name: Stop
+        if: always()
+        run: docker compose down -v
